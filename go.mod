@@ -1,3 +1,3 @@
-module github.com/Shubhaankar-Sharma/go-requests
+module github.com/Shubhaankar-sharma/go-requests
 
 go 1.15
