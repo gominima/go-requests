@@ -31,6 +31,7 @@ func (r *Request) Post() (Response, error) {
 	for key, value := range r.Headers {
 		req.Header.Set(key, value)
 	}
+	req.Header.Set("Content-Type", "application/json")
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
