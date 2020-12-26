@@ -15,9 +15,10 @@ type Request struct {
 }
 
 type Response struct {
-	Status  string
-	Headers interface{}
-	Body    map[string]interface{}
+	Status     string
+	Headers    interface{}
+	Body       map[string]interface{}
+	StatusCode int
 }
 
 func (r *Request) Post() (Response, error) {
@@ -40,6 +41,30 @@ func (r *Request) Post() (Response, error) {
 	defer resp.Body.Close()
 	response := Response{}
 	response.Status = resp.Status
+	response.StatusCode = resp.StatusCode
+	response.Headers = resp.Header
+	var body map[string]interface{}
+	json.NewDecoder(resp.Body).Decode(&body)
+	response.Body = body
+	return response, nil
+}
+
+func (r *Request) Get() (Response, error) {
+	req, err := http.NewRequest("GET", r.Url, nil)
+
+	for key, value := range r.Headers {
+		req.Header.Set(key, value)
+	}
+	client := &http.Client{}
+	resp, err := client.Do(req)
+
+	if err != nil {
+		return Response{}, err
+	}
+	defer resp.Body.Close()
+	response := Response{}
+	response.Status = resp.Status
+	response.StatusCode = resp.StatusCode
 	response.Headers = resp.Header
 	var body map[string]interface{}
 	json.NewDecoder(resp.Body).Decode(&body)
