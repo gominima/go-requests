@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"strings"
+	//"strings"
 )
 
 //Request Struct is to be declared before making a request
