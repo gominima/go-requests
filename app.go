@@ -54,6 +54,9 @@ func (r *Request) Post() (Response, error) {
 		req.Header.Set(key, value)
 	}
 	req.Header.Set("Content-Type", "application/json")
+	for key, value := range r.Headers {
+		req.Header.Add(key, value)
+	}
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
@@ -79,6 +82,11 @@ func (r *Request) Get() (Response, error) {
 
 	for key, value := range r.Headers {
 		req.Header.Set(key, value)
+		delete(r.Headers, key)
+		break
+	}
+	for key, value := range r.Headers {
+		req.Header.Add(key, value)
 	}
 
 	client := &http.Client{}
@@ -100,19 +108,27 @@ func (r *Request) Get() (Response, error) {
 
 func (r *Request) PostFormUrlEncoded() (Response, error) {
 	data := url.Values{}
+
 	for key, value := range r.Data {
 		data.Set(key, fmt.Sprintf("%v", value))
+		delete(r.Data, key)
+		break
 	}
+	for key, value := range r.Data {
+		data.Add(key, fmt.Sprintf("%v", value))
+	}
+
 	client := &http.Client{}
 	req, err := http.NewRequest("POST", r.Url, bytes.NewBufferString(data.Encode()))
 
 	if err != nil {
 		return Response{}, err
 	}
+
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	for key, value := range r.Headers {
-		req.Header.Set(key, value)
+		req.Header.Add(key, value)
 	}
-	req.Header.Add("Content-Type", "application/x-www-form-urlencoded ; param=value")
 
 	resp, err := client.Do(req)
 
