@@ -104,7 +104,7 @@ func (r *Request) PostFormUrlEncoded() (Response, error) {
 		data.Set(key, fmt.Sprintf("%v", value))
 	}
 	client := &http.Client{}
-	req, err := http.NewRequest(http.MethodPost, r.Url, strings.NewReader(data.Encode()))
+	req, err := http.NewRequest("POST", r.Url, bytes.NewBufferString(data.Encode()))
 
 	if err != nil {
 		return Response{}, err
@@ -112,7 +112,7 @@ func (r *Request) PostFormUrlEncoded() (Response, error) {
 	for key, value := range r.Headers {
 		req.Header.Set(key, value)
 	}
-	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded ; param=value")
 
 	resp, err := client.Do(req)
 
