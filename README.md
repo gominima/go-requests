@@ -5,8 +5,6 @@
 </p>
 
 <p align="center">
-<a href="https://goreportcard.com/badge/github.com/gominima/go-requests"> <img src="https://goreportcard.com/badge/github.com/gominima/go-requests" /> </a>
-<a href="https://img.shields.io/github/go-mod/go-version/gominima/go-requests"> <img src="https://img.shields.io/github/go-mod/go-version/gominima/go-requests" /></a>
 <a href="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"> <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" /></a>
 <a href="https://discord.gg/gRyCr5APmg"> <img src="https://img.shields.io/discord/916969864512548904" /></a>
 <img src="https://img.shields.io/tokei/lines/github/gominima/go-requests" />
