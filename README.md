@@ -18,8 +18,6 @@
 ```go
 package main
 
-package main
-
 import (
 	"fmt"
 	"github.com/gominima/go-requests"
