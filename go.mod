@@ -1,3 +1,3 @@
-module github.com/Shubhaankar-sharma/go-requests
+module github.com/gominima/go-requests
 
-go 1.15
+go 1.17
