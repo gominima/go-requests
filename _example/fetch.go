@@ -7,8 +7,7 @@ import (
 )
 
 func main() {
-     client := goquests.New()
-     resp, err := client.Get(goquests.Request{
+     resp, err := goquests.Get(goquests.Request{
 	     URL: "https://random-data-api.com/api/users/random_user",
 	     Data: make(map[string]interface{}),
 	     Headers: make(map[string]string),

@@ -44,47 +44,43 @@ func NewRequest(method string, r Request) (Response, error) {
 	return response, nil
 }
 
-func New() *Request {
-	return &Request{}
-}
-
-func (r *Request) Post(option Request) (Response, error) {
+func Post(option Request) (Response, error) {
 	response, err := NewRequest("POST", option)
 	return response, err
 }
 
 /***/
-func (r *Request) Get(option Request) (Response, error) {
+func Get(option Request) (Response, error) {
 	response, err := NewRequest("GET", option)
 	return response, err
 }
 
-func (r *Request) Put(option Request) (Response, error) {
+func Put(option Request) (Response, error) {
 	response, err := NewRequest("PUT", option)
 	return response, err
 }
 
-func (r *Request) Patch(option Request) (Response, error) {
+func Patch(option Request) (Response, error) {
 	response, err := NewRequest("PATCH", option)
 	return response, err
 }
 
-func (r *Request) Delete(option Request) (Response, error) {
+func Delete(option Request) (Response, error) {
 	response, err := NewRequest("DELETE", option)
 	return response, err
 }
 
-func (r *Request) Trace(option Request) (Response, error) {
+func Trace(option Request) (Response, error) {
 	response, err := NewRequest("TRACE", option)
 	return response, err
 }
 
-func (r *Request) Options(option Request) (Response, error) {
+func Options(option Request) (Response, error) {
 	response, err := NewRequest("OPTIONS", option)
 	return response, err
 }
 
-func (r *Request) Head(option Request) (Response, error) {
+func Head(option Request) (Response, error) {
 	response, err := NewRequest("Head", option)
 	return response, err
 }
